@@ -1,0 +1,134 @@
+snippet hk
+	/**
+	 * Implementation of hook_$2
+	 * 
+	 * ${4}
+	 * @module $1
+	 **/
+	function ${1:module}_${2:foo}(${3}) {
+	  ${5}
+	} /* END hook $1_$2 */
+snippet hook D6 nodeapi
+	/**
+	 * Implementation of hook_nodeapi
+	 * 
+	 * ${2}
+	 * @param &$node
+	 *   The node the action is being performed on.
+	 * @param $op
+	 *   Either :
+	 *     - alter
+	 *     - delete
+	 *     - delete revision
+	 *     - insert
+	 *     - load
+	 *     - prepare
+	 *     - prepare translation
+	 *     - print
+	 *     - rss item
+	 *     - search result
+	 *     - presave
+	 *     - update
+	 *     - update index
+	 *     - validate
+	 *     - view
+	 * @module $1
+	 **/
+	function ${1:module}_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+	  switch ($op) {
+	    case 'alter':
+	      ${3:// alter code ...}
+	      break;
+	    case 'delete':
+	      ${4:// delete code ...}
+	      break;
+	    case 'delete revision':
+	      ${5:// delete revision code ...}
+	      break;
+	    case 'insert':
+	      ${6:// insert code ...}
+	      break;
+	    case 'load':
+	      ${7:// load code ...}
+	      break;
+	    case 'prepare':
+	      ${8:// prepare code ...}
+	      break;
+	    case 'prepare translation':
+	      ${8:// prepare translation code ...}
+	      break;
+	    case 'print':
+	      ${9:// print code ...}
+	      break;
+	    case 'rss item':
+	      ${10:// rss item code ...}
+	      break;
+	    case 'search result':
+	      ${11:// search result code ...}
+	      break;
+	    case 'presave':
+	      ${12:// presave code ...}
+	      break;
+	    case 'update':
+	      ${13:// update code ...}
+	      break;
+	    case 'update index':
+	      ${14:// update index code ...}
+	      break;
+	    case 'validate':
+	      ${15:// validate code ...}
+	      break;
+	    case 'view':
+	      ${16:// view code ...}
+	      break;
+	  }
+	} /* END hook $1_nodeapi */
+snippet hook D6 block
+	/**
+	 * Implementation of hook_block
+	 * 
+	 * ${2}
+	 * @param $op
+	 *   Default : 'list'
+	 *   Either :
+	 *     - list
+	 *     - configure
+	 *     - save
+	 *     - view
+	 * @param $delta
+	 *   Which block to return (not applicable if $op is 'list'). See above for 
+	 *   more information about delta values.
+	 * @param $edit
+	 *   If $op is 'save', the submitted form data from the configuration form.
+	 * @module $1
+	 **/
+	function ${1:module}_block($op = 'list', $delta = 0, $edit = array()) {
+	  if ($op == 'list') {
+	    $blocks = array(
+	      array(
+	        'info' => t('${3:$1 block}'),
+	        'weight' => 0,
+	        'status' => 1,
+	        'region' => ${4:left},
+	        ),
+	      );
+	    return $blocks;
+	  } 
+	  else if ($op == 'configure') {
+	    ${5:// code ...}
+	  }
+	  else if ($op == 'save') {
+	    ${6:// code ...}
+	  }
+	  else if ($op == 'view') {
+	    switch ($delta) {
+	      case 0:
+	        ${7: $block = array(
+	          'subject' => t('Title of block $1'), 
+	          'content' => $1_display_block_0(),
+	          );}
+	        break;
+	    }
+	    return $block;
+	  }
+	} /* END hook $1_block */	
