@@ -135,9 +135,7 @@ endif
 " }}}
 
 " {{{ Custom vimrc.local loading
-if filereadable("$HOME/.vim/vimrc.local")
-  source $HOME/.vim/vimrc.local
-endif
+source $HOME/.vim/vimrc.local
 " }}}
 
 
@@ -166,6 +164,16 @@ call pathogen#runtime_append_all_bundles()
 " {{{ Undo settings
 set undofile
 nnoremap <F5> :GundoToggle<CR>
+" }}}
+
+" {{{ Sphinx doc
+if has("autocmd")
+  "Sphinx documentation
+  " Just add " vim: ft=rst.sphinxdoc: modeline
+  augroup sphinxdoc
+    autocmd Filetype rst.sphinxdoc autocmd BufWritePost * !make -C .. html
+  augroup END
+endif
 " }}}
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
