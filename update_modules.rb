@@ -21,6 +21,7 @@ git_bundles = [
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/sjl/gundo.vim.git",
+  "git://github.com/altercation/vim-colors-solarized.git",
 ]
 
 vim_org_scripts = [
