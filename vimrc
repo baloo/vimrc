@@ -135,7 +135,9 @@ endif
 " }}}
 
 " {{{ Custom vimrc.local loading
-source $HOME/.vim/vimrc.local
+if filereadable("$HOME/.vim/vimrc.local")
+  source $HOME/.vim/vimrc.local
+endif
 " }}}
 
 
